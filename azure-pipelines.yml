@@ -44,7 +44,9 @@ steps:
       azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
       azureResourceGroup: $(azureResourceGroup)
       kubernetesCluster: $(kubernetesCluster)
-      command: install
+      command: upgrade 
+      releaseName: prometheus-community
+      install: true
       chartName: prometheus-community/prometheus
 
   - task: HelmDeploy@0
@@ -54,5 +56,7 @@ steps:
       azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
       azureResourceGroup: $(azureResourceGroup)
       kubernetesCluster: $(kubernetesCluster)
-      command: install
+      command: upgrade 
+      releaseName: grafana
+      install: true
       chartName: grafana/grafana
