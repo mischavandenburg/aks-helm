@@ -45,6 +45,7 @@ steps:
       azureResourceGroup: $(azureResourceGroup)
       kubernetesCluster: $(kubernetesCluster)
       command: upgrade
+      releaseName:: prometheus
       chartName: prometheus-community/prometheus
 
   - task: HelmDeploy@0
@@ -55,4 +56,5 @@ steps:
       azureResourceGroup: $(azureResourceGroup)
       kubernetesCluster: $(kubernetesCluster)
       command: upgrade
+      releaseName:: grafana
       chartName: grafana/grafana
