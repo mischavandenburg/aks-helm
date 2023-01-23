@@ -26,6 +26,18 @@ steps:
       kubernetesCluster: $(kubernetesCluster)
       command: ls
       arguments: -all
+      command: install
+      chartName: prometheus-community/prometheus
+
+  # - task: HelmDeploy@0
+  #   displayName: Helm install prometheus
+  #   inputs:
+  #     connectionType: Azure Resource Manager
+  #     azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
+  #     azureResourceGroup: $(azureResourceGroup)
+  #     kubernetesCluster: $(kubernetesCluster)
+  #     command: install
+  #     chartName: prometheus-community/prometheus
 
   - script: echo Hello, world!
     displayName: 'Run a one-line script'
