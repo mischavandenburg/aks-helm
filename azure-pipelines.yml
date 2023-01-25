@@ -43,7 +43,7 @@ steps:
       releaseName: prometheus-community
       install: true
       chartName: prometheus-community/prometheus
-      useClusterAdmin: true
+      # useClusterAdmin: true
       namespace: monitoring
 
   - task: HelmDeploy@0
@@ -57,5 +57,5 @@ steps:
       releaseName: grafana
       install: true
       chartName: grafana/grafana
-      useClusterAdmin: true
+      # useClusterAdmin: true
       namespace: monitoring
