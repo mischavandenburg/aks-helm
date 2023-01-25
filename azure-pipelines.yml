@@ -5,7 +5,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  # azureSubscriptionEndpoint: sabaton-service-connection
+  azureSubscriptionEndpoint: sabaton-service-connection
   azureContainerRegistry: contoso.azurecr.io
   azureResourceGroup: sabaton-k8s-resources
   kubernetesCluster: sabaton-k8s
@@ -26,7 +26,7 @@ steps:
     displayName: Helm list installs
     inputs:
       connectionType: Azure Resource Manager
-      # azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
+      azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
       azureResourceGroup: $(azureResourceGroup)
       kubernetesCluster: $(kubernetesCluster)
       command: ls
@@ -36,26 +36,26 @@ steps:
     displayName: Helm install prometheus
     inputs:
       connectionType: Azure Resource Manager
-      # azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
+      azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
       azureResourceGroup: $(azureResourceGroup)
       kubernetesCluster: $(kubernetesCluster)
       command: upgrade 
       releaseName: prometheus-community
       install: true
       chartName: prometheus-community/prometheus
-      # useClusterAdmin: true
+      useClusterAdmin: true
       namespace: monitoring
 
   - task: HelmDeploy@0
     displayName: Helm install grafana
     inputs:
       connectionType: Azure Resource Manager
-      # azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
+      azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
       azureResourceGroup: $(azureResourceGroup)
       kubernetesCluster: $(kubernetesCluster)
       command: upgrade 
       releaseName: grafana
       install: true
       chartName: grafana/grafana
-      # useClusterAdmin: true
+      useClusterAdmin: true
       namespace: monitoring
