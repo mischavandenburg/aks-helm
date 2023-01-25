@@ -1,8 +1,3 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - main
 
@@ -48,6 +43,8 @@ steps:
       releaseName: prometheus-community
       install: true
       chartName: prometheus-community/prometheus
+      useClusterAdmin: true
+      namespace: monitoring
 
   - task: HelmDeploy@0
     displayName: Helm install grafana
@@ -60,3 +57,5 @@ steps:
       releaseName: grafana
       install: true
       chartName: grafana/grafana
+      useClusterAdmin: true
+      namespace: monitoring
